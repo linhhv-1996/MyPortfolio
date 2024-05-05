@@ -13,7 +13,7 @@ import PostCard from 'components/blog/card';
 import { PageSlideFade, StaggerChildren } from 'components/shared/animations/page-transitions';
 import Header from 'components/shared/header';
 import { MotionBox } from 'components/shared/animations/motion';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next'
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -106,7 +106,7 @@ const Posts = ({ posts }) => {
 
 const root = process.cwd();
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 
   const paths = fs.readdirSync(path.join(root, 'data', 'posts')).map((p) => p.replace(/\.mdx/, ''));
   const localPosts = [];
